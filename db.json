@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "sebastian",
+      "password": "12345",
+      "empresa": "PcPedia",
+      "servicios": ["Arrendamiento", "Soporte Técnico", "Gestión de Garantías"]
+    },
+    {
+      "id": 2,
+      "username": "jordy",
+      "password": "admin123",
+      "empresa": "386 Smart",
+      "servicios": ["Soporte Técnico", "Gestión de Garantías"]
+    }
+  ]
+}
