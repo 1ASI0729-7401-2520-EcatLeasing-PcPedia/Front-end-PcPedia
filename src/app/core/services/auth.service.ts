@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'https://13b938e7-359c-4cc3-9343-8f74fd57db5e.mock.pstmn.io/';
   private currentUser: User | null = null;
 
   constructor(private http: HttpClient) {}
