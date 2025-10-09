@@ -1,1 +1,30 @@
-<p>contracts works!</p>
+<div class="contracts-container">
+  <h1>Mis Contratos</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Buscar contrato..."
+      (input)="onSearch()"
+    />
+  </div>
+
+  <div class="cards-container">
+    <mat-card
+      *ngFor="let contrato of contratos"
+      class="contract-card"
+      (click)="openDetails(contrato.id)"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ contrato.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ contrato.descripcion }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Equipos:</strong> {{ contrato.equipos }}</p>
+        <p><strong>Inicio:</strong> {{ contrato.fechaInicio | date }}</p>
+        <p><strong>Fin:</strong> {{ contrato.fechaFin | date }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -26,6 +26,7 @@ export class ToolbarContent {
     { icon: 'bar_chart', label: 'Informes', route: '/informes' },
     { icon: 'description', label: 'Contratos', route: '/contratos' },
     { icon: 'person', label: 'Mi perfil', route: '/perfil' },
+    { icon: 'shopping_cart', label: 'Tienda', route: '/tienda' },
     { icon: 'logout', label: 'Cerrar sesión', route: '/logout' }
   ];
 }

@@ -1,0 +1,13 @@
+{
+  "HOME": {
+    "TITLE": "Dashboard",
+    "DESCRIPTION": "Overview of your contracts and assets"
+  },
+  "PROFILE": {
+    "TITLE": "My Profile",
+    "LANGUAGE": "Language",
+    "SPANISH": "Spanish",
+    "ENGLISH": "English"
+  }
+}
+
