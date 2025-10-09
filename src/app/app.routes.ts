@@ -7,6 +7,7 @@ import { HomeComponent } from './shared/presentation/views/home/home';
 import { Reports } from './shared/presentation/views/reports/reports';
 import { Contracts } from './shared/presentation/views/contracts/contracts';
 import { Profile } from './shared/presentation/views/profile/profile';
+import {Shop} from './shared/presentation/views/shop/shop';
 
 export const routes: Routes = [
   // Página inicial: Login
@@ -24,7 +25,8 @@ export const routes: Routes = [
       { path: 'inicio', component: HomeComponent },
       { path: 'informes', component: Reports },
       { path: 'contratos', component: Contracts },
-      { path: 'perfil', component: Profile }
+      { path: 'perfil', component: Profile },
+      { path: 'tienda', component: Shop }
     ]
   },
 
