@@ -1,0 +1,12 @@
+{
+  "HOME": {
+    "TITLE": "Panel de Control",
+    "DESCRIPTION": "Resumen de tus contratos y activos"
+  },
+  "PROFILE": {
+    "TITLE": "Mi Perfil",
+    "LANGUAGE": "Idioma",
+    "SPANISH": "Español",
+    "ENGLISH": "Inglés"
+  }
+}

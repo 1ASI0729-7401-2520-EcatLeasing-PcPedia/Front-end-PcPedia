@@ -1,28 +1,31 @@
-<div class="home-container">
-  <h1>¡Bienvenido a la Intranet {{ usuario?.empresa }}!</h1>
-  <p>Usuario: <strong>{{ usuario?.username }}</strong></p>
+<div class="dashboard-container">
+  <h1>Inicio</h1>
+  <p>Un resumen general de tus activos y servicios.</p>
 
-  <section class="about-section">
-    <h2>Sobre Nosotros</h2>
-    <p>
-      En {{ usuario?.empresa }}, ofrecemos soluciones integrales en tecnología, garantizando
-      calidad, soporte y eficiencia en cada servicio que brindamos.
-    </p>
-  </section>
-
-  <section class="services-section">
-    <h2>Tus Servicios</h2>
-    <div class="cards-container">
-      <mat-card *ngFor="let servicio of servicios" class="service-card">
-        <mat-card-header>
-          <mat-card-title>{{ servicio }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            {{ getDescripcion(servicio) }}
-          </p>
-        </mat-card-content>
-      </mat-card>
+  <div class="kpi-container">
+    <div class="kpi-card">
+      <h2>{{ contratosActivos }}</h2>
+      <p>Contratos Activos</p>
     </div>
-  </section>
+    <div class="kpi-card">
+      <h2>{{ equiposTotales }}</h2>
+      <p>Equipos Totales</p>
+    </div>
+    <div class="kpi-card">
+      <h2>{{ incidentesTotales }}</h2>
+      <p>Incidentes Totales</p>
+    </div>
+  </div>
+
+  <div class="charts-container">
+    <div class="chart-card">
+      <h3>Distribución de Equipos por Modelo</h3>
+      <canvas #chartModelos></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Equipos por Tipo</h3>
+      <canvas #chartTipos></canvas>
+    </div>
+  </div>
 </div>
