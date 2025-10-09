@@ -1,0 +1,41 @@
+<div class="profile">
+  <div class="profile-image">
+    <img src="https://cdn-icons-png.freepik.com/256/12225/12225881.png?semt=ais_white_label">
+  </div>
+
+  <div class="profile-text">
+    <div class="profile-information">
+      <h3>{{ 'profile.profileInformation' | translate }}</h3>
+      <div class="info-square">
+        <h4>{{ 'profile.name' | translate }}</h4>
+        <p> {{ usuario?.username }} </p>
+        <h4>{{ 'profile.email' | translate }}</h4>
+        <p> {{ usuario?.username }} </p>
+      </div>
+    </div>
+
+    <div class="profile-configuration">
+      <h3>{{ 'profile.profileConfiguration' | translate }}</h3>
+      <div class="info-square">
+        <div class="language-switcher">
+          <h4>{{ 'profile.language' | translate }}</h4>
+          <app-language-switcher/>
+        </div>
+
+        <div class="password-changer">
+          <h4>{{ 'profile.password' | translate }}</h4>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            [value]="usuario?.password"
+            class="input-password"
+            readonly
+          />
+          <button type="button" class="toggle-button" (click)="togglePassword()">
+            {{ showPassword ? '️‍👁️‍🗨️' : '👁️' }}
+          </button>
+          <button class="change-button">{{ 'profile.changeButton' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
