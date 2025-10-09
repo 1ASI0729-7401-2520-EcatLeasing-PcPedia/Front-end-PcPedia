@@ -1,0 +1,11 @@
+{
+  "profile": {
+    "profileInformation": "Profile Information",
+    "name": "Name",
+    "email": "Email",
+    "profileConfiguration": "Profile Configuration",
+    "language": "Language",
+    "password": "Password",
+    "changeButton": "Change"
+  }
+}
