@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LanguageSwitcher } from './language-switcher';
+import { ToolbarContent } from './toolbar-content';
 
-describe('LanguageSwitcher', () => {
-  let component: LanguageSwitcher;
-  let fixture: ComponentFixture<LanguageSwitcher>;
+describe('ToolbarContent', () => {
+  let component: ToolbarContent;
+  let fixture: ComponentFixture<ToolbarContent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LanguageSwitcher]
+      imports: [ToolbarContent]
     })
-      .compileComponents();
+    .compileComponents();
 
-    fixture = TestBed.createComponent(LanguageSwitcher);
+    fixture = TestBed.createComponent(ToolbarContent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

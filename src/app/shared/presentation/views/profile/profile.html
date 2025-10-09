@@ -1,0 +1,62 @@
+<div class="profile">
+  <!-- Imagen del perfil -->
+  <div class="profile-image">
+    <img
+      src="https://cdn-icons-png.freepik.com/256/12225/12225881.png?semt=ais_white_label"
+      alt="User profile image"
+    />
+  </div>
+
+  <!-- Información del usuario -->
+  <div class="profile-text">
+    <div class="profile-information">
+      <h3>{{ 'PROFILE.TITLE' | translate }}</h3>
+
+      <div class="info-square">
+        <h4>{{ 'PROFILE.NAME' | translate }}</h4>
+        <p>{{ usuario?.username }}</p>
+
+        <h4>{{ 'PROFILE.EMAIL' | translate }}</h4>
+        <p>{{ usuario?.email || '—' }}</p>
+      </div>
+    </div>
+
+    <!-- Configuración del perfil -->
+    <div class="profile-configuration">
+      <h3>{{ 'PROFILE.CONFIGURATION' | translate }}</h3>
+
+      <div class="info-square">
+        <!-- Selector de idioma -->
+        <div class="language-switcher">
+          <h4>{{ 'PROFILE.LANGUAGE' | translate }}</h4>
+          <app-language-switcher></app-language-switcher>
+        </div>
+
+        <!-- Cambio de contraseña -->
+        <div class="password-changer">
+          <h4>{{ 'PROFILE.PASSWORD' | translate }}</h4>
+          <div class="password-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              [value]="usuario?.password"
+              class="input-password"
+              readonly
+            />
+            <button
+              type="button"
+              class="toggle-button"
+              (click)="togglePassword()"
+              [title]="showPassword ? ('PROFILE.HIDE_PASSWORD' | translate) : ('PROFILE.SHOW_PASSWORD' | translate)"
+            >
+              {{ showPassword ? '🙈' : '👁️' }}
+            </button>
+          </div>
+
+          <button class="change-button">
+            {{ 'PROFILE.CHANGE_BUTTON' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
