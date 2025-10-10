@@ -1,0 +1,17 @@
+.header {
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px;
+}
+.header .right { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.w280 { width:280px; max-width:100%; }
+.w220 { width:220px; }
+
+.grid {
+  display:grid; gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.row { display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
+.row .full { grid-column: 1 / -1; }
+
+.empty { text-align:center; padding:32px; }
+.empty mat-icon { font-size:40px; opacity:.7; }

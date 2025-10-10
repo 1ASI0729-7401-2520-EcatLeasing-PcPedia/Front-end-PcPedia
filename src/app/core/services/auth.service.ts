@@ -5,11 +5,13 @@ import { User } from '../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users';
+  // ✅ URL corregida
+  private apiUrl = 'https://my-json-server.typicode.com/1ASI0729-7401-2520-EcatLeasing-PcPedia/Fake-Api/users';
   private currentUser: User | null = null;
 
   constructor(private http: HttpClient) {}
 
+  // 🔐 Login con validación
   login(username: string, password: string): Observable<boolean> {
     const url = `${this.apiUrl}?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
     console.log('🔍 URL solicitada:', url);
@@ -29,15 +31,18 @@ export class AuthService {
     );
   }
 
+  // 🚪 Cerrar sesión
   logout(): void {
     this.currentUser = null;
     localStorage.removeItem('user');
   }
 
+  // ✅ Verificar autenticación
   isAuthenticated(): boolean {
     return !!localStorage.getItem('user');
   }
 
+  // 👤 Obtener usuario actual
   getCurrentUser(): User | null {
     return this.currentUser || JSON.parse(localStorage.getItem('user')!);
   }

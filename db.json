@@ -5,14 +5,210 @@
       "username": "sebastian",
       "password": "12345",
       "empresa": "PcPedia",
-      "servicios": ["Arrendamiento", "Soporte Técnico", "Gestión de Garantías"]
+      "servicios": ["Arrendamiento", "Soporte Técnico", "Gestión de Garantías"],
+      "contratos": [1, 2]
     },
     {
       "id": 2,
       "username": "jordy",
       "password": "admin123",
       "empresa": "386 Smart",
-      "servicios": ["Soporte Técnico", "Gestión de Garantías"]
+      "servicios": ["Soporte Técnico", "Gestión de Garantías"],
+      "contratos": [3]
+    }
+  ],
+  "contratos": [
+    {
+      "id": 1,
+      "empresaId": 1,
+      "nombre": "Contrato Arrendamiento - Lima 2024",
+      "descripcion": "Contrato anual de leasing tecnológico para equipos HP.",
+      "equipos": 48,
+      "estado": "Vigente",
+      "fechaInicio": "2024-01-15",
+      "fechaFin": "2025-12-31",
+      "servicioRelacionado": "Arrendamiento",
+      "contacto": {
+        "nombre": "Patricia Escobedo",
+        "cargo": "Jefa de TI",
+        "correo": "patricia@pcpedia.com",
+        "telefono": "+51 999 888 777"
+      },
+      "incidentes": [
+        { "tipo": "Laptop", "modelo": "HP ZBook Firefly 14 G10", "cantidad": 2 },
+        { "tipo": "Desktop", "modelo": "HP EliteDesk 800 G5", "cantidad": 1 }
+      ],
+      "detalles": [
+        {
+          "tipo": "Laptop",
+          "modelos": [
+            { "nombre": "HP ZBook Firefly 14 G10", "cantidad": 12 },
+            { "nombre": "HP EliteBook 840 G9", "cantidad": 8 }
+          ]
+        },
+        {
+          "tipo": "Desktop",
+          "modelos": [
+            { "nombre": "HP ProDesk 400 G6", "cantidad": 15 },
+            { "nombre": "HP EliteDesk 800 G5", "cantidad": 13 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "empresaId": 1,
+      "nombre": "Contrato Soporte - PcPedia Sucursal Sur",
+      "descripcion": "Contrato de soporte técnico para PCs y laptops corporativas.",
+      "equipos": 27,
+      "estado": "Próximo a vencer",
+      "fechaInicio": "2023-08-01",
+      "fechaFin": "2026-07-31",
+      "servicioRelacionado": "Soporte Técnico",
+      "contacto": {
+        "nombre": "Luis Vargas",
+        "cargo": "Coordinador de soporte",
+        "correo": "lvargas@pcpedia.com",
+        "telefono": "+51 987 654 321"
+      },
+      "incidentes": [
+        { "tipo": "Laptop", "modelo": "HP 240 G8", "cantidad": 1 },
+        { "tipo": "Impresora", "modelo": "HP LaserJet Pro M404dn", "cantidad": 2 }
+      ],
+      "detalles": [
+        {
+          "tipo": "Laptop",
+          "modelos": [
+            { "nombre": "HP Pavilion 15", "cantidad": 10 },
+            { "nombre": "HP 240 G8", "cantidad": 5 }
+          ]
+        },
+        {
+          "tipo": "Impresora",
+          "modelos": [
+            { "nombre": "HP LaserJet Pro M404dn", "cantidad": 12 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "empresaId": 2,
+      "nombre": "Contrato de Garantías - 386 Smart",
+      "descripcion": "Gestión de garantías extendidas HP y Lenovo para clientes corporativos.",
+      "equipos": 35,
+      "estado": "Vigente",
+      "fechaInicio": "2024-03-10",
+      "fechaFin": "2027-03-09",
+      "servicioRelacionado": "Gestión de Garantías",
+      "contacto": {
+        "nombre": "Marco Chauca",
+        "cargo": "Gerente de Soporte",
+        "correo": "mchauca@386smart.com",
+        "telefono": "+51 911 222 333"
+      },
+      "incidentes": [
+        { "tipo": "Laptop", "modelo": "HP ProBook 450 G10", "cantidad": 3 }
+      ],
+      "detalles": [
+        {
+          "tipo": "Laptop",
+          "modelos": [
+            { "nombre": "Lenovo ThinkPad L14", "cantidad": 10 },
+            { "nombre": "HP ProBook 450 G10", "cantidad": 7 }
+          ]
+        },
+        {
+          "tipo": "Desktop",
+          "modelos": [
+            { "nombre": "HP ProDesk 400 G7", "cantidad": 8 },
+            { "nombre": "Lenovo V50s", "cantidad": 10 }
+          ]
+        }
+      ]
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "HP ZBook Firefly 14 G10",
+      "descripcion": "Laptop empresarial ultraligera con Intel Core i7, 16GB RAM, 512GB SSD y pantalla de 14 pulgadas.",
+      "categoria": "Laptop",
+      "marca": "HP",
+      "procesador": "Intel Core i7-1355U",
+      "memoria": "16GB DDR5",
+      "almacenamiento": "512GB SSD",
+      "precio": 4900,
+      "stock": 8,
+      "imagen": "https://store.hp.com/peru/images/product/ZBook14G10.png"
+    },
+    {
+      "id": 2,
+      "nombre": "HP ProDesk 400 G7",
+      "descripcion": "Desktop potente para oficinas con Intel Core i5, 8GB RAM, 1TB HDD y Windows 11 Pro.",
+      "categoria": "Desktop",
+      "marca": "HP",
+      "procesador": "Intel Core i5-12400",
+      "memoria": "8GB DDR4",
+      "almacenamiento": "1TB HDD",
+      "precio": 2800,
+      "stock": 10,
+      "imagen": "https://store.hp.com/peru/images/product/ProDesk400G7.png"
+    },
+    {
+      "id": 3,
+      "nombre": "HP EliteBook 840 G9",
+      "descripcion": "Laptop profesional de alto rendimiento con Intel i7, 16GB RAM, 1TB SSD, ideal para ejecutivos.",
+      "categoria": "Laptop",
+      "marca": "HP",
+      "procesador": "Intel Core i7-1270P",
+      "memoria": "16GB DDR5",
+      "almacenamiento": "1TB SSD",
+      "precio": 5700,
+      "stock": 5,
+      "imagen": "https://store.hp.com/peru/images/product/EliteBook840G9.png"
+    }
+  ],
+  "carrito": [],
+  "incidents": [
+    {
+      "id": 101,
+      "usuarioId": 1,
+      "empresaId": 1,
+      "contratoId": 1,
+      "code": "INC-101",
+      "serie": "5CD3X1ABCD",
+      "modelo": "HP ZBook Firefly 14 G10",
+      "fecha": "2025-09-12",
+      "estado": "Abierto",
+      "descripcion": "Pantalla parpadea al mover la tapa.",
+      "tecnico": "Hilton Vargas"
+    },
+    {
+      "id": 102,
+      "usuarioId": 1,
+      "empresaId": 1,
+      "contratoId": 2,
+      "code": "INC-102",
+      "serie": "CZP0M44K9Q",
+      "modelo": "HP LaserJet Pro M404dn",
+      "fecha": "2025-09-18",
+      "estado": "En Proceso",
+      "descripcion": "Atasco frecuente en bandeja 2.",
+      "tecnico": "Sebastián Hernández"
+    },
+    {
+      "id": 103,
+      "usuarioId": 2,
+      "empresaId": 2,
+      "contratoId": 3,
+      "code": "INC-103",
+      "serie": "PF1L7Q2X88",
+      "modelo": "HP ProBook 450 G10",
+      "fecha": "2025-10-01",
+      "estado": "Cerrado",
+      "descripcion": "Batería no carga al 100%.",
+      "tecnico": "Marco Chauca"
     }
   ]
 }

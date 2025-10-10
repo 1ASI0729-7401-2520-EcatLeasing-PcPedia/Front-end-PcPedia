@@ -25,6 +25,8 @@ export class ToolbarContent {
     { icon: 'home', label: 'Inicio', route: '/inicio' },
     { icon: 'bar_chart', label: 'Informes', route: '/informes' },
     { icon: 'description', label: 'Contratos', route: '/contratos' },
+    { icon: 'report', label: 'Incidentes', route: '/incidents' },
+    { icon: 'shopping_cart', label: 'Tienda', route: '/tienda' },
     { icon: 'person', label: 'Mi perfil', route: '/perfil' },
     { icon: 'logout', label: 'Cerrar sesión', route: '/logout' }
   ];
