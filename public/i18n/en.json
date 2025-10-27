@@ -7,7 +7,12 @@
     "TITLE": "My Profile",
     "LANGUAGE": "Language",
     "SPANISH": "Spanish",
-    "ENGLISH": "English"
+    "ENGLISH": "English",
+    "PASSWORD": "Password",
+    "EMAIL": "Email",
+    "NAME": "Name",
+    "CONFIGURATION": "Configuration",
+    "CHANGE_BUTTON": "Change"
   }
 }
 

@@ -7,6 +7,11 @@
     "TITLE": "Mi Perfil",
     "LANGUAGE": "Idioma",
     "SPANISH": "Español",
-    "ENGLISH": "Inglés"
+    "ENGLISH": "Inglés",
+    "PASSWORD": "Contraseña",
+    "EMAIL": "Correo",
+    "NAME": "Nombre",
+    "CONFIGURATION": "Configuracion",
+    "CHANGE_BUTTON": "Cambiar"
   }
 }

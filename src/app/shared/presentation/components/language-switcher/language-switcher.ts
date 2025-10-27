@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../../../core/services/translation.service';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-switcher',
   standalone: true,
   imports: [CommonModule, FormsModule, TranslatePipe, TranslatePipe],
   template: `
-    <select [(ngModel)]="selectedLang" (change)="changeLanguage()">
+    <select [(ngModel)]="currentLang" (change)="useLanguage(currentLang)">
       <option value="es">{{ 'PROFILE.SPANISH' | translate }}</option>
       <option value="en">{{ 'PROFILE.ENGLISH' | translate }}</option>
     </select>
@@ -26,15 +26,41 @@ import {TranslatePipe} from '@ngx-translate/core';
   `]
 })
 export class LanguageSwitcherComponent implements OnInit {
-  selectedLang = 'es';
+  /**
+   * Standard language
+   */
+  currentLang = 'es';
+  /**
+   * All languages for the web
+   */
+  languages = ['es', 'en']
 
-  constructor(private translationService: TranslationService) {}
+  /**
+   * Service to translate the web
+   */
+  private translate: TranslateService;
 
-  ngOnInit() {
-    this.selectedLang = localStorage.getItem('lang') || 'es';
+  /**
+   * Initial configuration language
+   */
+  constructor() {
+    this.translate = inject(TranslateService);
+    this.currentLang = this.translate.getCurrentLang();
   }
 
-  changeLanguage() {
-    this.translationService.setLanguage(this.selectedLang);
+  /**
+   * Implement for first time the service in web
+   */
+  ngOnInit() {
+    this.currentLang = localStorage.getItem('lang') || 'es';
+    this.useLanguage(this.currentLang);
+  }
+
+  /**
+   * method to convert languages: (en to es) or (es to en)
+   */
+  useLanguage(language: string) {
+    this.translate.use(language);
+    this.currentLang = language;
   }
 }
