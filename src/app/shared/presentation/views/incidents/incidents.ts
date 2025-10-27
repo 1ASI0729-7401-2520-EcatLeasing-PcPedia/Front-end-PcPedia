@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, computed, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -13,13 +14,14 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { IncidentsService } from '../../../../core/services/incidents.service';
 import { Incident } from '../../../../core/models/incident.model';
 import { AuthService } from '../../../../core/services/auth.service';
-import { IncidentCreateDialogComponent } from './incident-create-dialog';
+import { NewIncident } from '../new-incident/new-incident';
 
 @Component({
   selector: 'app-incidents',
   standalone: true,
   imports: [
     CommonModule,
+    TranslatePipe,
     FormsModule,
     MatCardModule,
     MatIconModule,
@@ -33,12 +35,12 @@ import { IncidentCreateDialogComponent } from './incident-create-dialog';
   templateUrl: './incidents.html',
   styleUrls: ['./incidents.css']
 })
-export class IncidentsComponent implements OnInit {
+
+export class Incidents implements OnInit {
   private incidentsSvc = inject(IncidentsService);
   private auth = inject(AuthService);
   private dialog = inject(MatDialog);
 
-  // ✅ propiedades simples para usar con ngModel
   query: string = '';
   modelFilter: string = 'Todos';
 
@@ -46,34 +48,32 @@ export class IncidentsComponent implements OnInit {
   incidents = signal<Incident[]>([]);
   models = signal<string[]>(['Todos']);
 
-  // ✅ método que se recalcula siempre
   filtered(): Incident[] {
     const q = this.query.trim().toLowerCase();
     const mf = this.modelFilter.trim().toLowerCase();
 
     const list = this.incidents();
     return list.filter(i => {
-      const modelo = (i.modelo ?? '').toLowerCase().trim();
-      const code   = ((i.code ?? `INC-${i.id}`) as string).toLowerCase();
-      const serie  = (i.serie ?? '').toLowerCase();
-      const desc   = (i.descripcion ?? '').toLowerCase();
+      const model = (i.model ?? '').toLowerCase().trim();
+      const code   = ((`INC-${i.id}`) as string).toLowerCase();
+      const serial  = (i.serial ?? '').toLowerCase();
+      const desc   = (i.description ?? '').toLowerCase();
 
-      const hitQ = !q || code.includes(q) || serie.includes(q) || desc.includes(q);
-      const hitM = mf === 'todos' || modelo === mf;
+      const hitQ = !q || code.includes(q) || serial.includes(q) || desc.includes(q);
+      const hitM = mf === 'todos' || model === mf;
 
       return hitQ && hitM;
     });
   }
 
-
   ngOnInit(): void {
     const user = this.auth.getCurrentUser();
     if (!user) return;
 
-    this.incidentsSvc.getByUsuario(user.id).subscribe({
+    this.incidentsSvc.getByUser(user.id).subscribe({
       next: data => {
         this.incidents.set(data);
-        const uniq = Array.from(new Set(data.map(x => x.modelo))).sort();
+        const uniq = Array.from(new Set(data.map(x => x.model))).sort();
         this.models.set(['Todos', ...uniq]);
         this.isLoading.set(false);
       },
@@ -82,14 +82,14 @@ export class IncidentsComponent implements OnInit {
   }
 
   newIncident() {
-    this.dialog.open(IncidentCreateDialogComponent, {
-      width: '560px',
+    this.dialog.open(NewIncident, {
+      width: '500px',
       autoFocus: false,
       panelClass: 'app-surface'
     });
   }
 
-  stateColor(state: Incident['estado']) {
+  stateColor(state: Incident['state']) {
     switch (state) {
       case 'Abierto': return 'warn';
       case 'En Proceso': return 'primary';
@@ -97,7 +97,6 @@ export class IncidentsComponent implements OnInit {
     }
   }
 
-  // ✅ trackBy para evitar error TS2339
   trackById(index: number, item: any): number {
     return item.id;
   }
