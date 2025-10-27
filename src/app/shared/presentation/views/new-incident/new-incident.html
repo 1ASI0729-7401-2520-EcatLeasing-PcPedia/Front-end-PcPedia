@@ -1,0 +1,26 @@
+<h2 class="title">{{ 'INCIDENTS.NEW-INCIDENT' | translate }}</h2>
+
+<mat-dialog-content>
+  <form class="incident-form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'INCIDENTS.MODEL' | translate }}</mat-label>
+      <input matInput [(ngModel)]="model" name="model" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'INCIDENTS.SERIAL' | translate }}</mat-label>
+      <input matInput [(ngModel)]="serial" name="serial" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'INCIDENTS.DESCRIPTION' | translate }}</mat-label>
+      <textarea matInput rows="3" [(ngModel)]="description" name="descripcion" required></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">{{ 'INCIDENTS.CANCEL' | translate }}</button>
+  <button mat-raised-button color="primary" (click)="saveIncident()">{{ 'INCIDENTS.SAVE' | translate }}</button>
+</mat-dialog-actions>
+
