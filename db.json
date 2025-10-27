@@ -172,43 +172,31 @@
   "carrito": [],
   "incidents": [
     {
-      "id": 101,
-      "usuarioId": 1,
-      "empresaId": 1,
-      "contratoId": 1,
-      "code": "INC-101",
-      "serie": "5CD3X1ABCD",
-      "modelo": "HP ZBook Firefly 14 G10",
-      "fecha": "2025-09-12",
-      "estado": "Abierto",
-      "descripcion": "Pantalla parpadea al mover la tapa.",
-      "tecnico": "Hilton Vargas"
+      "id": "101",
+      "userId": 1,
+      "serial": "5CD3X1ABCD",
+      "model": "HP ZBook Firefly 14 G10",
+      "date": "2025-09-12",
+      "state": "Abierto",
+      "description": "Pantalla parpadea al mover la tapa."
     },
     {
-      "id": 102,
-      "usuarioId": 1,
-      "empresaId": 1,
-      "contratoId": 2,
-      "code": "INC-102",
-      "serie": "CZP0M44K9Q",
-      "modelo": "HP LaserJet Pro M404dn",
-      "fecha": "2025-09-18",
-      "estado": "En Proceso",
-      "descripcion": "Atasco frecuente en bandeja 2.",
-      "tecnico": "Sebastián Hernández"
+      "id": "102",
+      "userId": 1,
+      "serial": "CZP0M44K9Q",
+      "model": "HP LaserJet Pro M404dn",
+      "date": "2025-09-18",
+      "state": "En Proceso",
+      "description": "Atasco frecuente en bandeja 2."
     },
     {
-      "id": 103,
-      "usuarioId": 2,
-      "empresaId": 2,
-      "contratoId": 3,
-      "code": "INC-103",
-      "serie": "PF1L7Q2X88",
-      "modelo": "HP ProBook 450 G10",
-      "fecha": "2025-10-01",
-      "estado": "Cerrado",
-      "descripcion": "Batería no carga al 100%.",
-      "tecnico": "Marco Chauca"
+      "id": "103",
+      "userId": 2,
+      "serial": "PF1L7Q2X88",
+      "model": "HP ProBook 450 G10",
+      "date": "2025-10-01",
+      "state": "Cerrado",
+      "description": "Batería no carga al 100%."
     }
   ]
 }
