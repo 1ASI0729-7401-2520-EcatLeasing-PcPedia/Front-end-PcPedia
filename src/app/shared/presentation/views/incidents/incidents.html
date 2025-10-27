@@ -1,26 +1,23 @@
-<div class="app-card header">
-  <div class="left">
-    <div class="app-section-title">Incidents</div>
-  </div>
-  <div class="right">
-    <mat-form-field appearance="outline" class="w280">
-      <mat-label>Buscar por código/serie/descripción</mat-label>
-      <!-- ✅ ngModel con propiedad, no función -->
-      <input matInput [(ngModel)]="query" placeholder="Ej. INC-101, 5CD3..., batería">
-    </mat-form-field>
+<div class="header">
 
-    <mat-form-field appearance="outline" class="w220">
-      <mat-label>Modelo</mat-label>
-      <!-- ✅ ngModel con propiedad -->
-      <mat-select [(ngModel)]="modelFilter">
-        <mat-option *ngFor="let m of models()" [value]="m">{{ m }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <h4>{{ 'INCIDENTS.INCIDENTS' | translate }}</h4>
 
-    <button mat-raised-button color="primary" (click)="newIncident()">
-      <mat-icon>add</mat-icon>&nbsp;Nuevo incidente
-    </button>
-  </div>
+  <mat-form-field appearance="outline" class="search-bar">
+    <mat-label>{{ 'INCIDENTS.SEARCH-BY' | translate }}</mat-label>
+    <input matInput [(ngModel)]="query" placeholder="{{ 'INCIDENTS.SEARCH-EXAMPLE' | translate }}">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-bar">
+    <mat-label>{{ 'INCIDENTS.MODEL' | translate }}</mat-label>
+    <mat-select [(ngModel)]="modelFilter">
+      <mat-option *ngFor="let m of models()" [value]="m">{{ m }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="newIncident()">
+    <mat-icon>add</mat-icon>&nbsp;{{ 'INCIDENTS.NEW-INCIDENT' | translate }}
+  </button>
+
 </div>
 
 <ng-container *ngIf="isLoading(); else list">
@@ -34,40 +31,38 @@
 <ng-template #list>
   <div *ngIf="filtered().length === 0" class="app-card empty">
     <mat-icon>find_in_page</mat-icon>
-    <div class="app-section-title">Sin resultados</div>
-    <div>Ajusta tu búsqueda o el filtro por modelo.</div>
+    <div class="app-section-title">{{ 'INCIDENTS.NO-RESULTS' | translate }}</div>
+
+    <div>{{ 'INCIDENTS.ADJUST-SEARCH' | translate }}</div>
   </div>
 
   <div class="grid">
-    <!-- ✅ trackBy correcto -->
     <mat-card class="app-card" *ngFor="let i of filtered(); trackBy: trackById">
       <mat-card-header>
         <div mat-card-avatar><mat-icon>confirmation_number</mat-icon></div>
         <mat-card-title style="font-weight:800;">
-          {{ i.code || ('INC-' + i.id) }}
+          {{ ('INC-' + i.id) }}
         </mat-card-title>
-        <mat-card-subtitle>{{ i.modelo }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ i.model }}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
         <div class="row">
-          <div><strong>Serie:</strong> {{ i.serie }}</div>
-          <div><strong>Fecha:</strong> {{ i.fecha | date:'dd/MM/yyyy' }}</div>
-          <div><strong>Contrato:</strong> #{{ i.contratoId }}</div>
-          <div><strong>Técnico:</strong> {{ i.tecnico || '—' }}</div>
+          <div><strong>{{ 'INCIDENTS.SERIAL' | translate }}: </strong> {{ i.serial }}</div>
+          <div><strong>{{ 'INCIDENTS.DATE' | translate }}: </strong> {{ i.date | date:'dd/MM/yyyy' }}</div>
           <div class="full">
-            <strong>Descripción:</strong>
-            <div>{{ i.descripcion }}</div>
+            <strong>{{ 'INCIDENTS.DESCRIPTION' | translate }}:</strong>
+            <div>{{ i.description }}</div>
           </div>
         </div>
       </mat-card-content>
 
       <mat-card-actions class="actions">
         <mat-chip-set>
-          <mat-chip [color]="stateColor(i.estado)" selected>{{ i.estado }}</mat-chip>
+          <mat-chip [color]="stateColor(i.state)" selected>{{ i.state }}</mat-chip>
         </mat-chip-set>
-        <button mat-stroked-button>
-          <mat-icon>visibility</mat-icon>&nbsp;Detalle
+        <button mat-stroked-button style="margin-left: 20px">
+          <mat-icon>visibility</mat-icon>&nbsp;{{ 'INCIDENTS.DETAILS' | translate }}
         </button>
       </mat-card-actions>
     </mat-card>
