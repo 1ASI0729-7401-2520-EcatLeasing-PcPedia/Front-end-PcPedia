@@ -1,0 +1,15 @@
+<app-page-header title="Catálogo" subtitle="Equipos disponibles"></app-page-header>
+
+<div class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+  <article *ngFor="let d of devices()"
+           style="background:#0b1220;border:1px solid #1b2540;border-radius:12px;padding:16px">
+    <img [src]="d.imageUrl" [alt]="d.model"
+         style="width:100%;height:140px;object-fit:contain;margin-bottom:8px" />
+    <h3 style="margin:0 0 4px 0">{{ d.brand }} {{ d.model }}</h3>
+    <small class="muted">SKU: {{ d.sku }} · {{ d.category | titlecase }}</small>
+    <div style="margin:10px 0;font-weight:600">
+      {{ d.pricePerMonth | currencyPerMonth }}
+    </div>
+    <button class="btn btn-primary" (click)="addToCart(d)">Agregar al carrito</button>
+  </article>
+</div>

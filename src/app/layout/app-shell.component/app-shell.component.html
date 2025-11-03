@@ -1,0 +1,18 @@
+<!-- src/app/layout/app-shell.component/app-shell.component.html -->
+<app-toolbar
+  [title]="'PcPedia • Admin'"
+  [userName]="userName()"
+  [notifications]="unreadCount()"
+  (menuToggle)="toggleSidenav()"
+  (logout)="logout()">
+</app-toolbar>
+
+<app-sidenav
+  [opened]="menuOpen()"
+  [items]="items"
+  (navigate)="closeOnNavigate()">
+</app-sidenav>
+
+<main class="content" [class.shift]="menuOpen()">
+  <router-outlet></router-outlet>
+</main>

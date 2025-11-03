@@ -1,173 +1,695 @@
 {
+  "company": [
+    {
+      "id": "cmp_386",
+      "name": "PcPedia",
+      "logo_url": "/assets/logo.png",
+      "support_email": "soporte@pcpedia.local"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cus_demo",
+      "email": "demo@pcpedia.local",
+      "display_name": "Sebastián Hernández",
+      "phone": "+51 999 888 777",
+      "avatar_url": "/assets/avatars/customer.png",
+      "address": {
+        "line1": "Av. Javier Prado 123",
+        "line2": "Piso 7",
+        "city": "Lima",
+        "region": "Lima",
+        "postal_code": "15036",
+        "country": "PE"
+      },
+      "billing": {
+        "ruc": "20123456789",
+        "business_name": "PcPedia SAC",
+        "address": "Av. Javier Prado 123, Lima"
+      },
+      "default_payment_method_id": "pm_demo",
+      "created_at": "2025-10-01T10:00:00.000Z"
+    }
+  ],
+  "devices": [
+    {
+      "id": "dev_001",
+      "sku": "HP-840-G10",
+      "brand": "HP",
+      "model": "EliteBook 840 G10",
+      "category": "laptop",
+      "price_per_month": 120,
+      "stock": 15,
+      "condition": "new",
+      "image_url": "/assets/devices/hp-840.png",
+      "specs": {
+        "cpu": "i7-1355U",
+        "ram": "16GB",
+        "storage": "512GB SSD"
+      }
+    },
+    {
+      "id": "dev_002",
+      "sku": "LEN-T14-G3",
+      "brand": "Lenovo",
+      "model": "ThinkPad T14 Gen3",
+      "category": "laptop",
+      "price_per_month": 110,
+      "stock": 12,
+      "condition": "new",
+      "image_url": "/assets/devices/t14.png",
+      "specs": {
+        "cpu": "Ryzen 7 Pro",
+        "ram": "16GB",
+        "storage": "512GB SSD"
+      }
+    },
+    {
+      "id": "dev_003",
+      "sku": "DL-7090",
+      "brand": "Dell",
+      "model": "OptiPlex 7090",
+      "category": "desktop",
+      "price_per_month": 95,
+      "stock": 8,
+      "condition": "refurbished",
+      "image_url": "/assets/devices/optiplex.png",
+      "specs": {
+        "cpu": "i5-11500",
+        "ram": "16GB",
+        "storage": "512GB SSD"
+      }
+    },
+    {
+      "id": "dev_004",
+      "sku": "HP-Z24F",
+      "brand": "HP",
+      "model": "Z24f G3",
+      "category": "monitor",
+      "price_per_month": 18.5,
+      "stock": 30,
+      "condition": "new",
+      "image_url": "/assets/devices/hp-z24f.png",
+      "specs": {
+        "size": "23.8\"",
+        "panel": "IPS",
+        "hz": "75Hz"
+      }
+    },
+    {
+      "id": "dev_005",
+      "sku": "MBP-14-M2",
+      "brand": "Apple",
+      "model": "MacBook Pro 14 M2",
+      "category": "laptop",
+      "price_per_month": 260,
+      "stock": 6,
+      "condition": "new",
+      "image_url": "/assets/devices/mbp14.png",
+      "specs": {
+        "cpu": "Apple M2",
+        "ram": "16GB",
+        "storage": "512GB SSD"
+      }
+    },
+    {
+      "id": "dev_006",
+      "sku": "LEN-P27Q",
+      "brand": "Lenovo",
+      "model": "ThinkVision P27q",
+      "category": "monitor",
+      "price_per_month": 22,
+      "stock": 25,
+      "condition": "new",
+      "image_url": "/assets/devices/p27q.png",
+      "specs": {
+        "size": "27\"",
+        "panel": "IPS",
+        "hz": "60Hz",
+        "resolution": "2560x1440"
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "id": "ctr_2024_001",
+      "customer_id": "cus_demo",
+      "name": "Contrato Corporativo 2024",
+      "start_at": "2024-01-01T00:00:00.000Z",
+      "end_at": "2025-12-31T23:59:59.000Z",
+      "status": "active"
+    },
+    {
+      "id": "ctr_2025_002",
+      "customer_id": "cus_demo",
+      "name": "Proyecto Área Ventas 2025",
+      "start_at": "2025-02-01T00:00:00.000Z",
+      "end_at": "2026-01-31T23:59:59.000Z",
+      "status": "active"
+    }
+  ],
+  "assets": [
+    {
+      "id": "ast_1001",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2024_001",
+      "device_id": "dev_001",
+      "brand": "HP",
+      "model": "EliteBook 840 G10",
+      "part_number": "PN-HP-840G10-001",
+      "serial_number": "S-HP-840-0001",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-08-02T10:00:00.000Z",
+      "status": "in_use"
+    },
+    {
+      "id": "ast_1002",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2024_001",
+      "device_id": "dev_004",
+      "brand": "HP",
+      "model": "Z24f G3",
+      "part_number": "PN-HP-Z24F-003",
+      "serial_number": "S-HP-Z24F-0102",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-08-03T09:30:00.000Z",
+      "status": "in_use"
+    },
+    {
+      "id": "ast_1003",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2025_002",
+      "device_id": "dev_002",
+      "brand": "Lenovo",
+      "model": "ThinkPad T14 Gen3",
+      "part_number": "PN-LEN-T14G3-015",
+      "serial_number": "S-LEN-T14-2211",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-10-01T11:15:00.000Z",
+      "status": "in_use"
+    },
+    {
+      "id": "ast_1004",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2025_002",
+      "device_id": "dev_006",
+      "brand": "Lenovo",
+      "model": "ThinkVision P27q",
+      "part_number": "PN-LEN-P27Q-004",
+      "serial_number": "S-LEN-P27Q-9921",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-10-05T15:20:00.000Z",
+      "status": "in_use"
+    },
+    {
+      "id": "ast_1005",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2024_001",
+      "device_id": "dev_003",
+      "brand": "Dell",
+      "model": "OptiPlex 7090",
+      "part_number": "PN-DL-7090-007",
+      "serial_number": "S-DL-7090-5502",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-07-20T09:00:00.000Z",
+      "status": "in_use"
+    },
+    {
+      "id": "ast_1006",
+      "customer_id": "cus_demo",
+      "contract_id": "ctr_2024_001",
+      "device_id": "dev_005",
+      "brand": "Apple",
+      "model": "MacBook Pro 14 M2",
+      "part_number": "PN-AP-MBP14M2-002",
+      "serial_number": "S-AP-MBP-0009",
+      "assigned_to_user_id": "u_cus_demo",
+      "assigned_to_name": "Sebastián Hernández",
+      "assigned_at": "2025-09-12T13:45:00.000Z",
+      "status": "in_use"
+    }
+  ],
+  "orders": [
+    {
+      "id": "0c10",
+      "customer_id": "cus_demo",
+      "status": "created",
+      "currency": "PEN",
+      "items": [
+        {
+          "device_id": "dev_002",
+          "quantity": 2,
+          "price_per_month": 110
+        },
+        {
+          "device_id": "dev_003",
+          "quantity": 4,
+          "price_per_month": 95
+        }
+      ],
+      "notes": "Creado desde Checkout",
+      "contact": {
+        "name": "Sebastián",
+        "email": "sebastian@pcpedia.local"
+      },
+      "billing": {
+        "ruc": "20123456789",
+        "address": "Av. Javier Prado 123"
+      },
+      "created_at": "2025-11-03T09:41:32.896Z"
+    },
+    {
+      "id": "d039",
+      "customer_id": "cus_demo",
+      "status": "created",
+      "currency": "PEN",
+      "items": [
+        {
+          "device_id": "dev_001",
+          "quantity": 4,
+          "price_per_month": 120
+        }
+      ],
+      "notes": "Creado desde Checkout",
+      "contact": {
+        "name": "Sebastián",
+        "email": "sebastian@pcpedia.local"
+      },
+      "billing": {
+        "ruc": "20123456789",
+        "address": "Av. Javier Prado 123"
+      },
+      "created_at": "2025-11-03T10:34:43.112Z"
+    },
+    {
+      "id": "bf62",
+      "customer_id": "cus_demo",
+      "status": "created",
+      "currency": "PEN",
+      "items": [
+        {
+          "device_id": "dev_001",
+          "quantity": 1,
+          "price_per_month": 120
+        }
+      ],
+      "notes": "Creado desde Checkout",
+      "contact": {
+        "name": "Sebastián",
+        "email": "sebastian@pcpedia.local"
+      },
+      "billing": {
+        "ruc": "20123456789",
+        "address": "Av. Javier Prado 123"
+      },
+      "created_at": "2025-11-03T11:02:48.166Z"
+    },
+    {
+      "id": "b379",
+      "customer_id": "cus_demo",
+      "status": "created",
+      "currency": "PEN",
+      "items": [
+        {
+          "device_id": "dev_001",
+          "quantity": 4,
+          "price_per_month": 120
+        }
+      ],
+      "notes": "Creado desde Checkout",
+      "contact": {
+        "name": "Sebastián",
+        "email": "sebastian@pcpedia.local"
+      },
+      "billing": {
+        "ruc": "20123456789",
+        "address": "Av. Javier Prado 123"
+      },
+      "created_at": "2025-11-03T14:53:24.452Z"
+    }
+  ],
+  "shipments": [
+    {
+      "id": "shp_2001",
+      "order_id": "ord_1001",
+      "carrier": "DHL",
+      "tracking_number": "DHL123456789",
+      "status": "in_transit",
+      "shipped_at": "2025-10-23T14:00:00.000Z",
+      "delivered_at": null,
+      "address": {
+        "line1": "Av. Javier Prado 123",
+        "line2": "Piso 7",
+        "city": "Lima",
+        "region": "Lima",
+        "postal_code": "15036",
+        "country": "PE"
+      }
+    },
+    {
+      "id": "shp_2002",
+      "order_id": "ord_1002",
+      "carrier": "Olva",
+      "tracking_number": "OLVA-998877",
+      "status": "label_created",
+      "shipped_at": null,
+      "delivered_at": null,
+      "address": {
+        "line1": "Calle Los Laureles 456",
+        "line2": null,
+        "city": "Arequipa",
+        "region": "Arequipa",
+        "postal_code": "04001",
+        "country": "PE"
+      }
+    }
+  ],
+  "returns": [
+    {
+      "id": "ret_3001",
+      "device_id": "dev_003",
+      "customer_id": "cus_demo",
+      "reason": "Cambio por falla intermitente",
+      "status": "requested",
+      "requested_at": "2025-10-25T09:30:00.000Z",
+      "closed_at": null
+    },
+    {
+      "id": "ret_3002",
+      "device_id": "dev_004",
+      "customer_id": "cus_demo",
+      "reason": "No requerido",
+      "status": "received",
+      "requested_at": "2025-10-21T12:00:00.000Z",
+      "closed_at": "2025-10-24T18:10:00.000Z"
+    }
+  ],
+  "maintenance": [
+    {
+      "id": "mnt_4001",
+      "customer_id": "cus_demo",
+      "device_id": "dev_001",
+      "order_id": "ord_1001",
+      "kind": "incident",
+      "priority": "medium",
+      "status": "open",
+      "description": "Ruido en ventilador",
+      "requested_by": "sebastian@pcpedia.local",
+      "assigned_to": null,
+      "requested_at": "2025-10-24T10:00:00.000Z",
+      "sla_hours": 48,
+      "eta_at": "2025-10-26T10:00:00.000Z",
+      "updates": [
+        {
+          "at": "2025-10-24T10:00:00.000Z",
+          "by": "customer",
+          "message": "Creación de ticket"
+        }
+      ],
+      "attachments": [],
+      "closed_at": null,
+      "rating": null
+    },
+    {
+      "id": "mnt_4002",
+      "customer_id": "cus_demo",
+      "device_id": "dev_002",
+      "order_id": "ord_1002",
+      "kind": "incident",
+      "priority": "high",
+      "status": "closed",
+      "description": "Cambio de batería",
+      "requested_by": "soporte@pcpedia.local",
+      "assigned_to": "tech_jordy",
+      "requested_at": "2025-10-22T08:30:00.000Z",
+      "sla_hours": 24,
+      "eta_at": "2025-10-23T12:00:00.000Z",
+      "updates": [
+        {
+          "at": "2025-10-22T08:30:00.000Z",
+          "by": "customer",
+          "message": "Ticket creado"
+        },
+        {
+          "at": "2025-10-22T09:10:00.000Z",
+          "by": "system",
+          "status": "in_progress",
+          "message": "Asignado a tech_jordy"
+        }
+      ],
+      "attachments": [
+        {
+          "id": "att_01",
+          "url": "/assets/evidence/bateria.jpg",
+          "caption": "Foto del equipo"
+        }
+      ],
+      "closed_at": "2025-10-31T15:28:39.337Z",
+      "rating": {
+        "score": 5,
+        "comment": "Gracias por el soporte"
+      }
+    },
+    {
+      "id": "mnt_4003",
+      "customer_id": "cus_demo",
+      "device_id": "dev_004",
+      "order_id": null,
+      "kind": "preventive",
+      "priority": "low",
+      "status": "closed",
+      "description": "Pixel muerto verificado, sin reparación",
+      "requested_by": "operaciones@pcpedia.local",
+      "assigned_to": "tech_hilton",
+      "requested_at": "2025-10-18T15:00:00.000Z",
+      "sla_hours": 72,
+      "eta_at": "2025-10-20T15:00:00.000Z",
+      "updates": [
+        {
+          "at": "2025-10-18T15:00:00.000Z",
+          "by": "system",
+          "message": "Programado preventivo"
+        },
+        {
+          "at": "2025-10-19T17:45:00.000Z",
+          "by": "tech_hilton",
+          "status": "done",
+          "message": "Inspección realizada"
+        }
+      ],
+      "attachments": [],
+      "closed_at": "2025-10-31T16:20:08.301Z",
+      "rating": {
+        "score": 5,
+        "comment": "Gracias por el soporte"
+      }
+    }
+  ],
+  "payments": [
+    {
+      "id": "2380",
+      "order_id": "0c10",
+      "customer_id": "cus_demo",
+      "amount": 600,
+      "currency": "PEN",
+      "status": "paid",
+      "method": "card",
+      "invoice_number": null,
+      "paid_at": "2025-11-03T09:42:08.186Z",
+      "card_brand": "VISA",
+      "card_last4": "1111",
+      "created_at": "2025-11-03T09:41:32.903Z"
+    },
+    {
+      "id": "69b5",
+      "order_id": "d039",
+      "customer_id": "cus_demo",
+      "amount": 480,
+      "currency": "PEN",
+      "status": "paid",
+      "method": "card",
+      "invoice_number": null,
+      "paid_at": "2025-11-03T10:35:06.081Z",
+      "card_brand": "VISA",
+      "card_last4": "1111",
+      "created_at": "2025-11-03T10:34:43.122Z"
+    },
+    {
+      "id": "bc07",
+      "order_id": "bf62",
+      "customer_id": "cus_demo",
+      "amount": 120,
+      "currency": "PEN",
+      "status": "paid",
+      "method": "card",
+      "invoice_number": null,
+      "paid_at": "2025-11-03T11:03:12.103Z",
+      "card_brand": "VISA",
+      "card_last4": "1111",
+      "created_at": "2025-11-03T11:02:48.177Z"
+    },
+    {
+      "id": "cd0c",
+      "order_id": "b379",
+      "customer_id": "cus_demo",
+      "amount": 480,
+      "currency": "PEN",
+      "status": "paid",
+      "method": "invoice",
+      "invoice_number": null,
+      "paid_at": "2025-11-03T14:53:46.471Z",
+      "card_brand": null,
+      "card_last4": null,
+      "created_at": "2025-11-03T14:53:24.465Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tkt_6001",
+      "subject": "No enciende luego de suspensión",
+      "status": "open",
+      "priority": "medium",
+      "device_id": "dev_003",
+      "created_at": "2025-10-23T09:10:00.000Z"
+    },
+    {
+      "id": "072c",
+      "subject": "Problemas de conexion",
+      "status": "resolved",
+      "priority": "low",
+      "device_id": null,
+      "updates": [
+        {
+          "at": "2025-11-02T15:31:28.473Z",
+          "message": "Ticket creado por el cliente.",
+          "status": "open"
+        },
+        {
+          "at": "2025-11-02T15:31:58.473Z",
+          "message": "Marcado como resuelto por el cliente.",
+          "status": "resolved"
+        }
+      ],
+      "created_at": "2025-11-02T15:31:28.474Z"
+    },
+    {
+      "id": "1bdd",
+      "subject": "Prueba 4",
+      "status": "open",
+      "priority": "medium",
+      "device_id": "qwer",
+      "updates": [
+        {
+          "at": "2025-11-03T00:05:44.182Z",
+          "message": "Ticket creado por el cliente.",
+          "status": "open"
+        }
+      ],
+      "created_at": "2025-11-03T00:05:44.182Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "ntf_7001",
+      "type": "system",
+      "title": "Nuevo envío creado",
+      "body": "Se generó la guía DHL para la orden ord_1001.",
+      "read": true,
+      "created_at": "2025-10-23T14:05:00.000Z"
+    },
+    {
+      "id": "ntf_7002",
+      "type": "maintenance",
+      "title": "Ticket de mantenimiento en progreso",
+      "body": "mnt_4002 fue asignado a tech_jordy.",
+      "read": true,
+      "created_at": "2025-10-22T09:00:00.000Z"
+    },
+    {
+      "id": "4534",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago F00-807827 por 120 PEN.",
+      "read": true,
+      "created_at": "2025-11-03T06:43:02.137Z"
+    },
+    {
+      "id": "90d5",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago F-350f por 690 PEN.",
+      "read": true,
+      "created_at": "2025-11-03T07:14:34.628Z"
+    },
+    {
+      "id": "de2f",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago F001-123456 por 1225 PEN.",
+      "read": true,
+      "created_at": "2025-11-03T08:11:40.737Z"
+    },
+    {
+      "id": "3a3a",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago #2380 por 600 PEN.",
+      "read": true,
+      "created_at": "2025-11-03T09:42:08.211Z"
+    },
+    {
+      "id": "8572",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago #69b5 por 480 PEN.",
+      "read": true,
+      "created_at": "2025-11-03T10:35:06.100Z"
+    },
+    {
+      "id": "e156",
+      "customer_id": "cus_demo",
+      "type": "payment",
+      "title": "Pago aplicado",
+      "body": "Se registró el pago cd0c por 480 PEN.",
+      "read": false,
+      "created_at": "2025-11-03T14:53:46.485Z"
+    }
+  ],
   "users": [
     {
-      "id": 1,
-      "username": "sebastian",
-      "password": "12345",
-      "empresa": "PcPedia",
-      "servicios": ["Arrendamiento", "Soporte Técnico", "Gestión de Garantías"],
-      "contratos": [1, 2]
-    },
-    {
-      "id": 2,
-      "username": "jordy",
+      "id": "u_admin",
+      "email": "sebastian@pcpedia.local",
       "password": "admin123",
-      "empresa": "386 Smart",
-      "servicios": ["Soporte Técnico", "Gestión de Garantías"],
-      "contratos": [3]
-    }
-  ],
-  "contratos": [
-    {
-      "id": 1,
-      "empresaId": 1,
-      "nombre": "Contrato Arrendamiento - Lima 2024",
-      "descripcion": "Contrato anual de leasing tecnológico para equipos HP.",
-      "equipos": 48,
-      "estado": "Vigente",
-      "fechaInicio": "2024-01-15",
-      "fechaFin": "2025-12-31",
-      "servicioRelacionado": "Arrendamiento",
-      "contacto": {
-        "nombre": "Patricia Escobedo",
-        "cargo": "Jefa de TI",
-        "correo": "patricia@pcpedia.com",
-        "telefono": "+51 999 888 777"
-      },
-      "incidentes": [
-        { "tipo": "Laptop", "modelo": "HP ZBook Firefly 14 G10", "cantidad": 2 },
-        { "tipo": "Desktop", "modelo": "HP EliteDesk 800 G5", "cantidad": 1 }
-      ],
-      "detalles": [
-        {
-          "tipo": "Laptop",
-          "modelos": [
-            { "nombre": "HP ZBook Firefly 14 G10", "cantidad": 12 },
-            { "nombre": "HP EliteBook 840 G9", "cantidad": 8 }
-          ]
-        },
-        {
-          "tipo": "Desktop",
-          "modelos": [
-            { "nombre": "HP ProDesk 400 G6", "cantidad": 15 },
-            { "nombre": "HP EliteDesk 800 G5", "cantidad": 13 }
-          ]
-        }
+      "display_name": "Sebastián Hernández",
+      "roles": [
+        "admin"
       ]
     },
     {
-      "id": 2,
-      "empresaId": 1,
-      "nombre": "Contrato Soporte - PcPedia Sucursal Sur",
-      "descripcion": "Contrato de soporte técnico para PCs y laptops corporativas.",
-      "equipos": 27,
-      "estado": "Próximo a vencer",
-      "fechaInicio": "2023-08-01",
-      "fechaFin": "2026-07-31",
-      "servicioRelacionado": "Soporte Técnico",
-      "contacto": {
-        "nombre": "Luis Vargas",
-        "cargo": "Coordinador de soporte",
-        "correo": "lvargas@pcpedia.com",
-        "telefono": "+51 987 654 321"
-      },
-      "incidentes": [
-        { "tipo": "Laptop", "modelo": "HP 240 G8", "cantidad": 1 },
-        { "tipo": "Impresora", "modelo": "HP LaserJet Pro M404dn", "cantidad": 2 }
+      "id": "u_cus_demo",
+      "email": "demo@pcpedia.local",
+      "password": "demo123",
+      "display_name": "Sebastián Hernández",
+      "roles": [
+        "customer"
       ],
-      "detalles": [
-        {
-          "tipo": "Laptop",
-          "modelos": [
-            { "nombre": "HP Pavilion 15", "cantidad": 10 },
-            { "nombre": "HP 240 G8", "cantidad": 5 }
-          ]
-        },
-        {
-          "tipo": "Impresora",
-          "modelos": [
-            { "nombre": "HP LaserJet Pro M404dn", "cantidad": 12 }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "empresaId": 2,
-      "nombre": "Contrato de Garantías - 386 Smart",
-      "descripcion": "Gestión de garantías extendidas HP y Lenovo para clientes corporativos.",
-      "equipos": 35,
-      "estado": "Vigente",
-      "fechaInicio": "2024-03-10",
-      "fechaFin": "2027-03-09",
-      "servicioRelacionado": "Gestión de Garantías",
-      "contacto": {
-        "nombre": "Marco Chauca",
-        "cargo": "Gerente de Soporte",
-        "correo": "mchauca@386smart.com",
-        "telefono": "+51 911 222 333"
-      },
-      "incidentes": [
-        { "tipo": "Laptop", "modelo": "HP ProBook 450 G10", "cantidad": 3 }
-      ],
-      "detalles": [
-        {
-          "tipo": "Laptop",
-          "modelos": [
-            { "nombre": "Lenovo ThinkPad L14", "cantidad": 10 },
-            { "nombre": "HP ProBook 450 G10", "cantidad": 7 }
-          ]
-        },
-        {
-          "tipo": "Desktop",
-          "modelos": [
-            { "nombre": "HP ProDesk 400 G7", "cantidad": 8 },
-            { "nombre": "Lenovo V50s", "cantidad": 10 }
-          ]
-        }
-      ]
+      "customer_id": "cus_demo"
     }
   ],
-  "productos": [
+  "payment_methods": [
     {
-      "id": 1,
-      "nombre": "HP ZBook Firefly 14 G10",
-      "descripcion": "Laptop empresarial ultraligera con Intel Core i7, 16GB RAM, 512GB SSD y pantalla de 14 pulgadas.",
-      "categoria": "Laptop",
-      "marca": "HP",
-      "procesador": "Intel Core i7-1355U",
-      "memoria": "16GB DDR5",
-      "almacenamiento": "512GB SSD",
-      "precio": 4900,
-      "stock": 8,
-      "imagen": "https://store.hp.com/peru/images/product/ZBook14G10.png"
-    },
-    {
-      "id": 2,
-      "nombre": "HP ProDesk 400 G7",
-      "descripcion": "Desktop potente para oficinas con Intel Core i5, 8GB RAM, 1TB HDD y Windows 11 Pro.",
-      "categoria": "Desktop",
-      "marca": "HP",
-      "procesador": "Intel Core i5-12400",
-      "memoria": "8GB DDR4",
-      "almacenamiento": "1TB HDD",
-      "precio": 2800,
-      "stock": 10,
-      "imagen": "https://store.hp.com/peru/images/product/ProDesk400G7.png"
-    },
-    {
-      "id": 3,
-      "nombre": "HP EliteBook 840 G9",
-      "descripcion": "Laptop profesional de alto rendimiento con Intel i7, 16GB RAM, 1TB SSD, ideal para ejecutivos.",
-      "categoria": "Laptop",
-      "marca": "HP",
-      "procesador": "Intel Core i7-1270P",
-      "memoria": "16GB DDR5",
-      "almacenamiento": "1TB SSD",
-      "precio": 5700,
-      "stock": 5,
-      "imagen": "https://store.hp.com/peru/images/product/EliteBook840G9.png"
+      "id": "pm_demo",
+      "customer_id": "cus_demo",
+      "brand": "visa",
+      "holder": "Sebastián Hernández",
+      "last4": "4242",
+      "exp_month": 12,
+      "exp_year": 2028
     }
-  ],
-  "carrito": []
+  ]
 }

@@ -1,0 +1,7 @@
+<ul class="timeline">
+  <li *ngFor="let it of items" [class]="toneClass(it.tone)">
+    <div class="when">{{ when(it.date) }}</div>
+    <div class="title">{{ it.title }}</div>
+    <div class="desc" *ngIf="it.description">{{ it.description }}</div>
+  </li>
+</ul>

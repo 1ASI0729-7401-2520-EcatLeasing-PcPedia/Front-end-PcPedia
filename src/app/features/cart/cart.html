@@ -1,0 +1,42 @@
+<app-page-header title="Carrito" subtitle="Resumen de tus equipos"></app-page-header>
+
+<div *ngIf="items().length === 0" class="empty">
+  Tu carrito está vacío.
+</div>
+
+<div *ngIf="items().length > 0" class="cart-list">
+  <div class="cart-row" *ngFor="let it of items()">
+    <img *ngIf="it.imageUrl" [src]="it.imageUrl" alt="" class="thumb" />
+
+    <div class="info">
+      <div class="name">{{ it.brand }} {{ it.model }}</div>
+      <div class="muted">SKU: {{ it.sku || '—' }}</div>
+      <div class="price">
+        {{ it.pricePerMonth | currencyPerMonth }}
+      </div>
+    </div>
+
+    <div class="qty">
+      <button type="button" (click)="dec(it)">−</button>
+      <input type="number" [value]="it.quantity" readonly>
+      <button type="button" (click)="inc(it)">+</button>
+    </div>
+
+    <div class="subtotal">
+      {{ lineTotal(it) | currencyPerMonth }}
+    </div>
+
+    <button class="remove" (click)="remove(it)" aria-label="Quitar">✕</button>
+  </div>
+</div>
+
+<div *ngIf="items().length > 0" class="cart-footer">
+  <div class="spacer"></div>
+  <div class="total-label">Total mensual</div>
+  <div class="total-value">{{ total() | currencyPerMonth }}</div>
+  <button mat-raised-button color="primary"
+          [disabled]="items().length === 0"
+          (click)="goCheckout()">
+    Continuar
+  </button>
+</div>

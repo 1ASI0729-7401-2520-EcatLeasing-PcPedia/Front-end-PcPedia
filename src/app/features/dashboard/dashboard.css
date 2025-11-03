@@ -1,0 +1,5 @@
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{background:#fff;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.num{font-size:32px;font-weight:800}
+.lbl{color:#666}
+.warn .num{color:#e67e22}

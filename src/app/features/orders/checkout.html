@@ -1,0 +1,31 @@
+<!-- src/app/features/orders/checkout.html -->
+<h2>Pago</h2>
+
+<table class="tbl">
+  <thead>
+  <tr>
+    <th>Equipo</th>
+    <th class="right">Precio/mes</th>
+    <th class="right">Cant.</th>
+    <th class="right">Subtotal</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let r of rows()">
+    <td>{{ r.device?.brand }} {{ r.device?.model }}</td>
+    <td class="right">PEN {{ r.device?.pricePerMonth || 0 | number:'1.2-2' }}</td>
+    <td class="right">{{ r.quantity }}</td>
+    <td class="right">PEN {{ r.subtotal | number:'1.2-2' }}</td>
+  </tr>
+  </tbody>
+
+  <tfoot>
+  <tr>
+    <td colspan="3" class="right"><strong>Total mensual</strong></td>
+    <td class="right"><strong>PEN {{ total() | number:'1.2-2' }}</strong></td>
+  </tr>
+  </tfoot>
+</table>
+
+<button (click)="pay()">Crear Pedido</button>

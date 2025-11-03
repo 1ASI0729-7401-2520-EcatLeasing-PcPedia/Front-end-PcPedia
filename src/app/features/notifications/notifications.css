@@ -1,0 +1,6 @@
+.list{list-style:none;margin:0;padding:0}
+li{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+li.read{opacity:.7}
+.title{font-weight:700}
+.msg{color:#666}
+button{margin-top:6px}

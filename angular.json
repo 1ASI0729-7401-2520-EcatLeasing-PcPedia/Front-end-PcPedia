@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fronendpcpedia": {
+    "PcPediaFE": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -48,7 +48,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fronendpcpedia:build:production"
+              "buildTarget": "PcPediaFE:build:production"
             },
             "development": {
-              "buildTarget": "fronendpcpedia:build:development"
+              "buildTarget": "PcPediaFE:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,8 +95,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "c8db32c2-5995-4675-908f-a3fa784362f3"
   }
 }

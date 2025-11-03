@@ -1,0 +1,22 @@
+.list {
+  display: grid;
+  gap: 12px;
+}
+.card {
+  background: var(--mat-sys-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  padding: 12px;
+}
+.card header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card header h3 {
+  margin: 0 8px 0 0;
+  font-weight: 600;
+}
+.card .desc { margin: 8px 0 12px; }
+.card footer { display: flex; align-items: center; }
+.spacer { flex: 1 1 auto; }

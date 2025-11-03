@@ -1,0 +1,28 @@
+.tl { list-style: none; margin: 0; padding: 0; position: relative; }
+.tl__item { display: grid; grid-template-columns: 28px 1fr; column-gap: 12px; position: relative; }
+.tl__point {
+  position: relative; width: 28px; height: 28px; display: grid; place-items: center;
+}
+.tl__bullet {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #6b7280;
+}
+.tl__line {
+  position: absolute; left: 13px; top: 28px; bottom: -6px; width: 2px; background: #e5e7eb;
+}
+.tl__line.is-last { display: none; }
+
+.tl__body { padding-bottom: 14px; }
+.tl__head { display: flex; align-items: baseline; gap: 8px; }
+.tl__title { font-weight: 600; }
+.tl__time { color: #6b7280; font-size: 12px; }
+.tl__desc { margin: 6px 0 0; color: #374151; }
+
+.tl__empty { color: #6b7280; font-style: italic; }
+
+/* Tones */
+.tone--default .tl__bullet { background:#6b7280; }
+.tone--success .tl__bullet { background:#16a34a; }
+.tone--warn    .tl__bullet { background:#f59e0b; }
+.tone--danger  .tl__bullet { background:#ef4444; }
+.tone--info    .tl__bullet { background:#2563eb; }

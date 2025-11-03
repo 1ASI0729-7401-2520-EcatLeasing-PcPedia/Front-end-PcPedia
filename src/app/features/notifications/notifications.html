@@ -1,0 +1,7 @@
+<ul class="list">
+  <li *ngFor="let n of items()" [class.read]="n.read">
+    <div class="title">{{ n.title }}</div>
+    <div class="msg">{{ n.message }}</div>
+    <button *ngIf="!n.read" (click)="markRead(n)">Marcar como leída</button>
+  </li>
+</ul>

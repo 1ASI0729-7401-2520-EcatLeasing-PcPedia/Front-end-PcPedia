@@ -1,35 +1,114 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { Layout } from './shared/presentation/components/layout/layout';
-import { Login } from './features/login/login';
-import { AuthGuard } from './core/guards/auth.guard';
+import { AppShellComponent } from './layout/app-shell.component/app-shell.component';
+import { authGuard } from './core/guards/auth.guard';
 
-import { HomeComponent } from './shared/presentation/views/home/home';
-import { Reports } from './shared/presentation/views/reports/reports';
-import { Contracts } from './shared/presentation/views/contracts/contracts';
-import { Profile } from './shared/presentation/views/profile/profile';
-import {Shop} from './shared/presentation/views/shop/shop';
-
-export const routes: Routes = [
-  // Página inicial: Login
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-  // Login fuera del layout
-  { path: 'login', component: Login },
-
-  // Layout protegido (solo visible tras autenticación)
+export const APP_ROUTES: Routes = [
+  // 🔐 Rutas públicas (login)
   {
-    path: '',
-    component: Layout,
-    canActivate: [AuthGuard],
-    children: [
-      { path: 'inicio', component: HomeComponent },
-      { path: 'informes', component: Reports },
-      { path: 'contratos', component: Contracts },
-      { path: 'perfil', component: Profile },
-      { path: 'tienda', component: Shop }
-    ]
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login.component').then(m => m.LoginPage),
+    title: 'Login',
+    data: { breadcrumb: 'Login' },
   },
 
-  // Rutas no válidas redirigen al login
-  { path: '**', redirectTo: 'login' }
+  // 🧱 Rutas de autenticación antigua (si las usas aún)
+  {
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./features/auth/login.routes').then(m => m.default),
+        title: 'Login',
+        data: { breadcrumb: 'Login' },
+      },
+    ],
+  },
+
+  // 🧭 App protegida (requiere sesión iniciada)
+  {
+    path: '',
+    component: AppShellComponent,
+    canActivate: [authGuard],
+    canActivateChild: [authGuard],
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./features/dashboard/dashboard.routes').then(m => m.default),
+        title: 'Dashboard',
+        data: { icon: 'dashboard', breadcrumb: 'Dashboard' },
+      },
+      {
+        path: 'catalog',
+        loadChildren: () =>
+          import('./features/catalog/catalog.routes').then(m => m.default),
+        title: 'Catalog',
+        data: { icon: 'store', breadcrumb: 'Catalog' },
+      },
+      {
+        path: 'cart',
+        loadChildren: () =>
+          import('./features/cart/cart.routes').then(m => m.default),
+        title: 'My Cart',
+        data: { icon: 'shopping_cart', breadcrumb: 'Cart' },
+      },
+      {
+        path: 'tickets',
+        loadChildren: () =>
+          import('./features/tickets/tickets.routes').then(m => m.default),
+        title: 'Support Tickets',
+        data: { icon: 'confirmation_number', breadcrumb: 'Tickets' },
+      },
+      {
+        path: 'maintenance',
+        loadChildren: () =>
+          import('./features/maintenance/maintenance.routes').then(m => m.default),
+        title: 'Maintenance',
+        data: { icon: 'build', breadcrumb: 'Maintenance' },
+      },
+      {
+        path: 'returns',
+        loadChildren: () =>
+          import('./features/returns/returns.routes').then(m => m.default),
+        title: 'Returns',
+        data: { icon: 'assignment_return', breadcrumb: 'Returns' },
+      },
+      {
+        path: 'payments',
+        loadChildren: () =>
+          import('./features/payments/payments.routes').then(m => m.default),
+        title: 'Payments & Invoices',
+        data: { icon: 'payments', breadcrumb: 'Payments' },
+      },
+      {
+        path: 'notifications',
+        loadChildren: () =>
+          import('./features/notifications/notifications.routes').then(m => m.default),
+        title: 'Notifications',
+        data: { icon: 'notifications', breadcrumb: 'Notifications' },
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./features/profile/profile.routes').then(m => m.default),
+        title: 'My Profile',
+        data: { icon: 'person', breadcrumb: 'Profile' },
+      },
+      {
+        path: 'orders',
+        loadChildren: () =>
+          import('./features/orders/orders.routes').then(m => m.default),
+        title: 'Pedidos',
+        data: { icon: 'assignment', breadcrumb: 'Pedidos' },
+      },
+    ],
+  },
+
+  // 🚧 Fallback
+  { path: '**', redirectTo: '' },
 ];

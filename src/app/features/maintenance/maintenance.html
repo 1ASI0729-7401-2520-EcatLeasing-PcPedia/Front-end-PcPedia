@@ -1,0 +1,30 @@
+<app-page-header title="Mantenimientos" subtitle="Solicitudes y estado de atención">
+  <a mat-raised-button color="primary" routerLink="new">
+    <mat-icon>add</mat-icon> Nueva solicitud
+  </a>
+</app-page-header>
+
+<section *ngIf="loading()">Cargando…</section>
+
+<div class="list" *ngIf="!loading()">
+  <article class="card" *ngFor="let m of items()">
+    <header>
+      <h3>#{{ m.id }}</h3>
+      <mat-chip-set>
+        <mat-chip [color]="colorFor(m.status)" selected>{{ m.status }}</mat-chip>
+        <mat-chip>{{ m.priority }}</mat-chip>
+        <mat-chip>{{ m.kind }}</mat-chip>
+      </mat-chip-set>
+    </header>
+
+    <p class="desc">{{ m.description }}</p>
+
+    <footer>
+      <small>Equipo: {{ m.deviceId }}</small>
+      <span class="spacer"></span>
+      <a mat-stroked-button color="primary" [routerLink]="m.id">Ver detalle</a>
+    </footer>
+  </article>
+
+  <p *ngIf="items().length === 0">No hay solicitudes aún.</p>
+</div>

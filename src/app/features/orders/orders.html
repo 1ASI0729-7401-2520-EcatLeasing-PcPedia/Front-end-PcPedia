@@ -1,0 +1,41 @@
+<!-- src/app/features/orders/orders.html -->
+<app-page-header title="Pedidos" [breadcrumbs]="[{label:'Inicio', url:'/dashboard'}, {label:'Pedidos'}]"></app-page-header>
+
+<div class="filters">
+  <input
+    type="text"
+    placeholder="Buscar por id, estado, dispositivo…"
+    [ngModel]="searchText()"
+    (ngModelChange)="setSearch($event)"
+  />
+
+  <select [ngModel]="state()" (ngModelChange)="setState($event)">
+    <option value="">Todos los estados</option>
+    <option value="created">Creado</option>
+    <option value="approved">Aprobado</option>
+    <option value="in_transit">En tránsito</option>
+    <option value="delivered">Entregado</option>
+    <option value="cancelled">Cancelado</option>
+  </select>
+</div>
+
+<div class="list">
+  <div class="card" *ngFor="let o of filtered()">
+    <div class="head">
+      <h3 class="grow"># {{ o.id }}</h3>
+      <pc-status-chip [label]="o.status" [variant]="chipVariant(o.status)"></pc-status-chip>
+      <a class="more" [routerLink]="['/orders', o.id]">Ver detalle →</a>
+    </div>
+
+    <div class="meta">
+      {{ (o.createdAt || o.created_at) | date:'medium' }} • {{ o.currency }}
+      • Total/mes aprox: {{ monthly(o) | number:'1.0-2' }}
+    </div>
+
+    <div class="items">
+      {{ o.items.length }} ítem(s)
+    </div>
+
+    <div class="meta" *ngIf="o.notes">{{ o.notes }}</div>
+  </div>
+</div>

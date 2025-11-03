@@ -1,0 +1,19 @@
+<!-- src/app/shared/ui/page-header.component/page-header.component.html -->
+<nav *ngIf="breadcrumbs?.length">
+  <ol class="breadcrumb">
+    <li *ngFor="let bc of breadcrumbs; let last = last"
+        class="breadcrumb-item" [class.active]="last">
+
+      <!-- si NO es el último y hay ruta, usa link o url indistintamente -->
+      <a *ngIf="!last && (bc.link || bc.url)"
+         [routerLink]="bc.link || bc.url">
+        {{ bc.label }}
+      </a>
+
+      <!-- último o sin ruta: solo texto -->
+      <span *ngIf="last || !(bc.link || bc.url)">
+        {{ bc.label }}
+      </span>
+    </li>
+  </ol>
+</nav>

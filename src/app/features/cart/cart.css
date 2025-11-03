@@ -1,0 +1,24 @@
+.cart-list { display: grid; gap: 12px; }
+.cart-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 140px 160px 40px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #d2d9e8; border-radius: 12px; background: #eeefef;
+}
+.thumb { width: 72px; height: 72px; object-fit: contain; }
+.info .name { font-weight: 600; }
+.muted { opacity: .7; font-size: .85rem; }
+.price, .subtotal { font-weight: 600; }
+.qty { display: flex; align-items: center; gap: 6px; }
+.qty button { width: 28px; height: 28px; }
+.qty input { width: 48px; text-align: center; }
+.remove { background: none; border: none; color: #f77; font-size: 18px; }
+.cart-footer {
+  display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center;
+  margin-top: 16px; padding-top: 12px; border-top: 1px dashed #cfd1d6;
+}
+.total-label { opacity: .8; }
+.total-value { font-size: 1.1rem; font-weight: 700; }
+.checkout { padding: 10px 16px; border-radius: 10px; background: #3b82f6; color: white; border: none; }

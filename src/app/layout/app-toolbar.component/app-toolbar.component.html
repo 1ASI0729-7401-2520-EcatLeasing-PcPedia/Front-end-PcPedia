@@ -1,0 +1,18 @@
+<header class="toolbar">
+  <button class="icon" (click)="onMenu()" aria-label="abrir menú">☰</button>
+  <h1 class="title">{{ title }}</h1>
+  <div class="spacer"></div>
+
+  <a class="icon badge" [routerLink]="['/notifications']" aria-label="notificaciones">
+    🔔
+    <span *ngIf="notifications>0" class="dot">{{ notifications }}</span>
+  </a>
+
+  <button class="icon" (click)="onTheme()" aria-label="cambiar tema">🌓</button>
+
+  <div class="user">
+    <div class="avatar">{{ userName[0] | uppercase }}</div>
+    <span class="name">{{ userName }}</span>
+    <button class="logout" (click)="onLogout()">Salir</button>
+  </div>
+</header>

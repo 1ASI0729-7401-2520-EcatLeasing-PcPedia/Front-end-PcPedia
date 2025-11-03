@@ -1,0 +1,18 @@
+:host { display:block; }
+
+.content{
+  padding: 1rem;
+  margin-top: 56px;               /* debajo del toolbar */
+  transition: margin-left .2s ease;
+}
+
+@media (min-width: 1024px){
+  .content{ margin-left: 260px; } /* ancho del sidenav */
+  .content.shift{ margin-left: 260px; }
+}
+
+/* OPCIONAL: si el toolbar tiene un botón con clase o data-role del tema */
+:host ::ng-deep app-toolbar .theme-toggle,
+:host ::ng-deep [data-role="theme-toggle"]{
+  display: none !important;
+}

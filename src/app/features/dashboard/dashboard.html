@@ -1,0 +1,115 @@
+<app-page-header title="Dashboard" subtitle="Resumen de activos y uso"></app-page-header>
+
+<div class="grid">
+  <!-- Gráfico: Equipos por marca -->
+  <div class="card">
+    <div class="h">Equipos por marca</div>
+    <svg class="chart" [attr.viewBox]="'0 0 600 240'">
+      <ng-container *ngIf="byBrand().length; else emptyBrand">
+        <ng-container *ngFor="let d of byBrand(); let i = index">
+          <!-- Barras -->
+          <rect
+            [attr.x]="(i * (560 / byBrand().length)) + 40"
+            [attr.y]="220 - (d.value / maxValue(byBrand()) * 180)"
+            [attr.width]="(560 / byBrand().length) - 16"
+            [attr.height]="(d.value / maxValue(byBrand()) * 180)"
+            rx="6" ry="6"
+            style="fill: #93c5fd;">
+          </rect>
+          <!-- Labels -->
+          <text [attr.x]="(i * (560 / byBrand().length)) + 40 + ((560 / byBrand().length) - 16)/2"
+                y="235" text-anchor="middle" font-size="10">{{ d.label }}</text>
+          <text [attr.x]="(i * (560 / byBrand().length)) + 40 + ((560 / byBrand().length) - 16)/2"
+                [attr.y]="210 - (d.value / maxValue(byBrand()) * 180)"
+                text-anchor="middle" font-size="11" class="muted">{{ d.value }}</text>
+        </ng-container>
+      </ng-container>
+      <ng-template #emptyBrand>
+        <text x="300" y="120" text-anchor="middle" class="muted">Sin datos</text>
+      </ng-template>
+    </svg>
+  </div>
+
+  <!-- Gráfico: Equipos por contrato -->
+  <div class="card">
+    <div class="h">Equipos por contrato</div>
+    <svg class="chart" [attr.viewBox]="'0 0 600 240'">
+      <ng-container *ngIf="byContract().length; else emptyContract">
+        <ng-container *ngFor="let d of byContract(); let i = index">
+          <rect
+            [attr.x]="(i * (560 / byContract().length)) + 40"
+            [attr.y]="220 - (d.value / maxValue(byContract()) * 180)"
+            [attr.width]="(560 / byContract().length) - 16"
+            [attr.height]="(d.value / maxValue(byContract()) * 180)"
+            rx="6" ry="6"
+            style="fill: #86efac;">
+          </rect>
+          <text [attr.x]="(i * (560 / byContract().length)) + 40 + ((560 / byContract().length) - 16)/2"
+                y="235" text-anchor="middle" font-size="10">{{ d.label }}</text>
+          <text [attr.x]="(i * (560 / byContract().length)) + 40 + ((560 / byContract().length) - 16)/2"
+                [attr.y]="210 - (d.value / maxValue(byContract()) * 180)"
+                text-anchor="middle" font-size="11" class="muted">{{ d.value }}</text>
+        </ng-container>
+      </ng-container>
+      <ng-template #emptyContract>
+        <text x="300" y="120" text-anchor="middle" class="muted">Sin datos</text>
+      </ng-template>
+    </svg>
+  </div>
+
+  <!-- Gráfico: Equipos por modelo -->
+  <div class="card">
+    <div class="h">Equipos por modelo</div>
+    <svg class="chart" [attr.viewBox]="'0 0 600 240'">
+      <ng-container *ngIf="byModel().length; else emptyModel">
+        <ng-container *ngFor="let d of byModel(); let i = index">
+          <rect
+            [attr.x]="(i * (560 / byModel().length)) + 40"
+            [attr.y]="220 - (d.value / maxValue(byModel()) * 180)"
+            [attr.width]="(560 / byModel().length) - 16"
+            [attr.height]="(d.value / maxValue(byModel()) * 180)"
+            rx="6" ry="6"
+            style="fill: #fca5a5;">
+          </rect>
+          <text [attr.x]="(i * (560 / byModel().length)) + 40 + ((560 / byModel().length) - 16)/2"
+                y="235" text-anchor="middle" font-size="10">{{ d.label }}</text>
+          <text [attr.x]="(i * (560 / byModel().length)) + 40 + ((560 / byModel().length) - 16)/2"
+                [attr.y]="210 - (d.value / maxValue(byModel()) * 180)"
+                text-anchor="middle" font-size="11" class="muted">{{ d.value }}</text>
+        </ng-container>
+      </ng-container>
+      <ng-template #emptyModel>
+        <text x="300" y="120" text-anchor="middle" class="muted">Sin datos</text>
+      </ng-template>
+    </svg>
+  </div>
+
+  <!-- Tabla de Activos -->
+  <div class="card" style="grid-column: 1/-1">
+    <div class="h">Activos del usuario</div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Contrato</th>
+        <th>Part Number</th>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>N. de serie</th>
+        <th class="muted">Asignado a</th>
+        <th class="muted">Fecha</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let r of tableRows()">
+        <td><span class="badge">{{ r.contract }}</span></td>
+        <td>{{ r.partNumber }}</td>
+        <td>{{ r.model }}</td>
+        <td>{{ r.brand }}</td>
+        <td>{{ r.serial }}</td>
+        <td class="muted">{{ r.assignedTo }}</td>
+        <td class="muted">{{ r.assignedAt | date:'shortDate' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

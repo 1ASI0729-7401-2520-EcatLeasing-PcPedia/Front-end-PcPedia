@@ -1,0 +1,29 @@
+<app-page-header title="Pagos"
+                 [breadcrumbs]="[{label:'Inicio',url:'/dashboard'},{label:'Pagos'}]">
+</app-page-header>
+
+<div class="list">
+  <div class="card" *ngFor="let p of payments()">
+    <div class="head" style="display:flex;align-items:center;gap:12px">
+      <h3 class="grow"># {{ p.id }}</h3>
+      <span class="muted">{{ p.method }}</span>
+    </div>
+
+    <div class="meta">
+      {{ p.amount | number:'1.0-2' }} {{ p.currency }} • {{ p.status }}
+      <a class="more" [routerLink]="['/payments', p.id]">Ver detalle →</a>
+    </div>
+
+    <div class="actions" style="margin-top:8px">
+      <button *ngIf="p.status === 'pending'" (click)="openPay(p)">Pagar ahora</button>
+      <span *ngIf="p.status === 'paid'">Pagado el {{ p.paidAt | date:'short' }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<pc-payment-modal
+  *ngIf="paying() as sel"
+  [payment]="sel"
+  (closed)="closeModal($event)">
+</pc-payment-modal>

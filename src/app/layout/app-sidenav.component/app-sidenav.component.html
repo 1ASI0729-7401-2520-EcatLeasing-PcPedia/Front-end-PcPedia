@@ -1,0 +1,19 @@
+<nav class="sidenav" [class.opened]="opened">
+  <div class="brand">📦 PcPedia</div>
+
+  <a
+    *ngFor="let it of items"
+    class="link"
+    [routerLink]="it.route"
+    routerLinkActive="active"
+    (click)="navigate.emit()"
+  >
+    <span class="ic">{{ it.icon || '•' }}</span>
+    <span class="tx">{{ it.label }}</span>
+  </a>
+
+  <div class="footer">v1.0.0</div>
+</nav>
+
+<!-- overlay en móvil -->
+<div class="overlay" *ngIf="opened"></div>

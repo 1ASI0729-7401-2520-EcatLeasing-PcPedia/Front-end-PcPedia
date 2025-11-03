@@ -1,0 +1,50 @@
+<app-page-header
+  title="Detalle de pedido"
+  [breadcrumbs]="[
+    {label:'Inicio', url:'/dashboard'},
+    {label:'Pedidos', url:'/orders'},
+    {label: order()?.id || '...'}
+  ]"
+/>
+
+<ng-container *ngIf="order() as o">
+  <div class="card">
+    <div class="head" style="display:flex;align-items:center;gap:12px;">
+      <h2 class="grow"># {{ o.id }}</h2>
+      <pc-status-chip [label]="o.status" [variant]="chipVariant(o.status)"></pc-status-chip>
+    </div>
+    <div class="muted">
+      Creado: {{ o.createdAt | date:'medium' }} • Moneda: {{ o.currency }}
+      • Total/mes aprox: {{ monthly(o) | number:'1.0-2' }}
+    </div>
+    <div class="muted" *ngIf="o.notes">{{ o.notes }}</div>
+  </div>
+
+  <div class="card">
+    <h3>Ítems</h3>
+    <div class="list">
+      <div class="row" *ngFor="let it of o.items" style="display:flex;justify-content:space-between;">
+        <span>
+          <span class="pill">{{ it.quantity }}×</span>
+          <span class="muted"> {{ itemName(it.deviceId) }}</span>
+        </span>
+        <span class="muted">
+          {{ (it.pricePerMonth ?? 0) | number:'1.0-2' }}/mes
+          • <strong>Subtotal: {{ ((it.pricePerMonth ?? 0) * it.quantity) | number:'1.0-2' }}</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Línea de tiempo</h3>
+    <pc-timeline [items]="timeline()"></pc-timeline>
+  </div>
+
+  <!-- BOTÓN DESCARGAR RECIBO -->
+
+  <div style="margin-top: 8px;">
+    <button (click)="deleteOrder()" class="danger">Eliminar pedido</button>
+  </div>
+
+</ng-container>

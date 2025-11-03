@@ -1,0 +1,30 @@
+:host { display:block; }
+.sidenav{
+  position:fixed; inset:56px auto 0 0; width:260px; background:#0b1022; color:#cbd5e1;
+  border-right:1px solid #0f172a; transform: translateX(-100%); transition: transform .2s ease;
+  display:flex; flex-direction:column; z-index:40;
+}
+.sidenav.opened{ transform: translateX(0); }
+.brand{
+  padding:1rem; font-weight:700; color:#93c5fd; border-bottom:1px solid #0f172a;
+}
+.link{
+  display:flex; align-items:center; gap:.75rem; padding:.75rem 1rem; text-decoration:none;
+  color:inherit; border-left:3px solid transparent;
+}
+.link:hover{ background:#0f172a; }
+.link.active{ background:#0f172a; border-left-color:#60a5fa; color:#fff; }
+.ic{ width:1.25rem; text-align:center; }
+.footer{ margin-top:auto; padding:.75rem 1rem; font-size:.8rem; opacity:.7; }
+
+.overlay{
+  position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.35); z-index:30;
+  /* solo visible en móvil: en desktop no la mostramos */
+  display:none;
+}
+@media (max-width: 1023px){
+  .overlay{ display:block; }
+}
+@media (min-width: 1024px){
+  .sidenav{ transform: none; }
+}
