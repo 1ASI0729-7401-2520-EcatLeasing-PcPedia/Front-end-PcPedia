@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: '${API_URL}',
+  apiUrl: 'https://tu-api-backend.com/api',
   defaultLanguage: 'es',
   supportedLanguages: ['es', 'en']
 };
