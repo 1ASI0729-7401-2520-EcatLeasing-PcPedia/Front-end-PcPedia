@@ -1,6 +1,0 @@
-{
-  "framework": "angular",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/pcpedia",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
