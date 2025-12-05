@@ -4,6 +4,14 @@ export interface RequestItem {
   id?: number;
   productModelId?: number;
   productModelName?: string;
+  productModelBrand?: string;
+  productModelModel?: string;
+  productModel?: {
+    id?: number;
+    name?: string;
+    brand?: string;
+    model?: string;
+  };
   equipmentId?: number;
   equipmentName?: string;
   equipmentBrand?: string;

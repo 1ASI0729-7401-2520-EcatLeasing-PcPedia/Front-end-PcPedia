@@ -92,7 +92,7 @@ import { RequestStatus } from '../../../../../shared/models/base.model';
 
             <ng-container matColumnDef="items">
               <th mat-header-cell *matHeaderCellDef>{{ 'requests.items' | translate }}</th>
-              <td mat-cell *matCellDef="let item">{{ item.items?.length || 0 }} equipos</td>
+              <td mat-cell *matCellDef="let item">{{ getTotalItems(item) }} equipos</td>
             </ng-container>
 
             <ng-container matColumnDef="duration">
@@ -184,6 +184,11 @@ export class RequestListComponent implements OnInit {
   statuses = Object.values(RequestStatus);
 
   displayedColumns = ['id', 'client', 'company', 'items', 'duration', 'createdAt', 'status', 'actions'];
+
+  getTotalItems(request: Request): number {
+    if (!request.items || request.items.length === 0) return 0;
+    return request.items.reduce((sum, item) => sum + (item.quantity || 0), 0);
+  }
 
   ngOnInit(): void {
     this.loadRequests();

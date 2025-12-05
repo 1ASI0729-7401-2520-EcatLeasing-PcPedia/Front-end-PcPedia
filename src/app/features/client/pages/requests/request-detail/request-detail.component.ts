@@ -12,7 +12,7 @@ import { LoadingSpinnerComponent } from '../../../../../shared/components/ui/loa
 import { StatusBadgeComponent } from '../../../../../shared/components/ui/status-badge/status-badge.component';
 import { NotificationService } from '../../../../../core/services/notification.service';
 import { ClientRequestService } from '../services/client-request.service';
-import { Request } from '../models/request.model';
+import { Request, RequestItem } from '../models/request.model';
 
 @Component({
   selector: 'app-client-request-detail',
@@ -88,18 +88,18 @@ import { Request } from '../models/request.model';
               <ng-container matColumnDef="equipment">
                 <th mat-header-cell *matHeaderCellDef>{{ 'common.equipment' | translate }}</th>
                 <td mat-cell *matCellDef="let item">
-                  {{ item.equipmentName || 'Equipo #' + item.equipmentId }}
+                  {{ getItemName(item) }}
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="brand">
                 <th mat-header-cell *matHeaderCellDef>{{ 'inventory.brand' | translate }}</th>
-                <td mat-cell *matCellDef="let item">{{ item.equipmentBrand || '-' }}</td>
+                <td mat-cell *matCellDef="let item">{{ getItemBrand(item) }}</td>
               </ng-container>
 
               <ng-container matColumnDef="model">
                 <th mat-header-cell *matHeaderCellDef>{{ 'inventory.model' | translate }}</th>
-                <td mat-cell *matCellDef="let item">{{ item.equipmentModel || '-' }}</td>
+                <td mat-cell *matCellDef="let item">{{ getItemModel(item) }}</td>
               </ng-container>
 
               <ng-container matColumnDef="quantity">
@@ -198,5 +198,28 @@ export class ClientRequestDetailComponent implements OnInit {
         this.router.navigate(['/client/requests']);
       }
     });
+  }
+
+  getItemName(item: RequestItem): string {
+    if (item.equipmentName) return item.equipmentName;
+    if (item.productModelName) return item.productModelName;
+    if (item.productModel?.name) return item.productModel.name;
+
+    const referenceId = item.equipmentId ?? item.productModelId;
+    return referenceId ? `Equipo #${referenceId}` : 'Equipo';
+  }
+
+  getItemBrand(item: RequestItem): string {
+    return item.equipmentBrand
+      || item.productModelBrand
+      || item.productModel?.brand
+      || '-';
+  }
+
+  getItemModel(item: RequestItem): string {
+    return item.equipmentModel
+      || item.productModelModel
+      || item.productModel?.model
+      || '-';
   }
 }

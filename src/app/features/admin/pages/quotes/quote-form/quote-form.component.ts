@@ -99,9 +99,9 @@ import { Equipment } from '../../inventory/models/equipment.model';
                   <mat-form-field appearance="outline" class="equipment-field">
                     <mat-label>{{ 'quotes.equipment' | translate }}</mat-label>
                     <mat-select formControlName="equipmentId" (selectionChange)="onEquipmentChange(i)">
-                      @for (equipment of availableEquipments(); track equipment.id) {
+                      @for (equipment of getEquipmentOptions(i); track equipment.id) {
                         <mat-option [value]="equipment.id">
-                          {{ equipment.name }} - {{ equipment.brand }} {{ equipment.model }}
+                          {{ equipment.serialNumber }} - {{ equipment.name }} - {{ equipment.brand }} {{ equipment.model }}
                         </mat-option>
                       }
                     </mat-select>
@@ -109,7 +109,8 @@ import { Equipment } from '../../inventory/models/equipment.model';
 
                   <mat-form-field appearance="outline" class="quantity-field">
                     <mat-label>{{ 'quotes.quantity' | translate }}</mat-label>
-                    <input matInput type="number" formControlName="quantity" min="1">
+                    <input matInput type="number" formControlName="quantity" min="1" max="1" readonly>
+                    <mat-hint>1 equipo por item</mat-hint>
                   </mat-form-field>
 
                   <mat-form-field appearance="outline" class="price-field">
@@ -344,8 +345,9 @@ export class AdminQuoteFormComponent implements OnInit {
       if (requestId) {
         this.quoteForm.patchValue({ requestId: Number(requestId) });
         this.loadRequest(Number(requestId));
+      } else {
+        this.addItem();
       }
-      this.addItem();
     }
     this.loadEquipments();
   }
@@ -365,12 +367,19 @@ export class AdminQuoteFormComponent implements OnInit {
         // Load items
         this.itemsArray.clear();
         quote.items.forEach(item => {
-          this.itemsArray.push(this.fb.group({
-            equipmentId: [item.equipmentId, Validators.required],
-            quantity: [item.quantity, [Validators.required, Validators.min(1)]],
-            monthlyPrice: [item.unitPrice, [Validators.required, Validators.min(0)]]
-          }));
+          const units = Math.max(1, item.quantity || 1);
+          for (let i = 0; i < units; i++) {
+            this.itemsArray.push(this.fb.group({
+              equipmentId: [i === 0 ? item.equipmentId : null, Validators.required],
+              quantity: [1, [Validators.required, Validators.min(1), Validators.max(1)]],
+              monthlyPrice: [item.unitPrice, [Validators.required, Validators.min(0)]]
+            }));
+          }
         });
+
+        if (this.itemsArray.length === 0) {
+          this.addItem();
+        }
 
         // Load request info
         if (quote.requestId) {
@@ -405,12 +414,19 @@ export class AdminQuoteFormComponent implements OnInit {
         if (request.items && request.items.length > 0) {
           this.itemsArray.clear();
           request.items.forEach(item => {
-            this.itemsArray.push(this.fb.group({
-              equipmentId: [item.equipmentId, Validators.required],
-              quantity: [item.quantity, [Validators.required, Validators.min(1)]],
-              monthlyPrice: [0, [Validators.required, Validators.min(0)]]
-            }));
+            const units = Math.max(1, item.quantity || 1);
+            for (let i = 0; i < units; i++) {
+              this.itemsArray.push(this.fb.group({
+                equipmentId: [null, Validators.required],
+                quantity: [1, [Validators.required, Validators.min(1), Validators.max(1)]],
+                monthlyPrice: [0, [Validators.required, Validators.min(0)]]
+              }));
+            }
           });
+        }
+
+        if (this.itemsArray.length === 0) {
+          this.addItem();
         }
 
         this.isLoadingData.set(false);
@@ -425,7 +441,8 @@ export class AdminQuoteFormComponent implements OnInit {
   loadEquipments(): void {
     this.inventoryService.getEquipments({ page: 0, size: 100, status: 'AVAILABLE' }).subscribe({
       next: (page) => {
-        this.availableEquipments.set(page.content);
+        // Solo conservar disponibles; si la API no filtra por estado, filtramos aquí.
+        this.availableEquipments.set(page.content.filter(eq => eq.status === 'AVAILABLE'));
       },
       error: () => {
         this.notification.error('Error al cargar los equipos');
@@ -436,7 +453,7 @@ export class AdminQuoteFormComponent implements OnInit {
   addItem(): void {
     this.itemsArray.push(this.fb.group({
       equipmentId: [null, Validators.required],
-      quantity: [1, [Validators.required, Validators.min(1)]],
+      quantity: [1, [Validators.required, Validators.min(1), Validators.max(1)]],
       monthlyPrice: [0, [Validators.required, Validators.min(0)]]
     }));
   }
@@ -475,6 +492,20 @@ export class AdminQuoteFormComponent implements OnInit {
   calculateGrandTotal(): number {
     const months = this.quoteForm.get('durationMonths')?.value || 0;
     return this.calculateTotalMonthly() * months;
+  }
+
+  getEquipmentOptions(currentIndex: number): Equipment[] {
+    const selectedIds = this.itemsArray.controls
+      .map((ctrl, idx) => idx === currentIndex ? null : ctrl.get('equipmentId')?.value)
+      .filter((id): id is number => !!id);
+
+    const currentSelected = this.itemsArray.at(currentIndex).get('equipmentId')?.value;
+
+    return this.availableEquipments().filter(eq => {
+      const isSame = currentSelected === eq.id;
+      const isAvailable = eq.status === 'AVAILABLE';
+      return (isAvailable && !selectedIds.includes(eq.id)) || isSame;
+    });
   }
 
   submit(): void {

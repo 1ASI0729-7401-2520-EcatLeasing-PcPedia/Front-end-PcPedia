@@ -2,8 +2,18 @@ import { BaseEntity, RequestStatus } from '../../../../../shared/models/base.mod
 
 export interface RequestItem {
   id: number;
-  equipmentId: number;
-  equipmentName: string;
+  productModelId?: number;
+  productModelName?: string;
+  productModelBrand?: string;
+  productModelModel?: string;
+  productModel?: {
+    id?: number;
+    name?: string;
+    brand?: string;
+    model?: string;
+  };
+  equipmentId?: number;
+  equipmentName?: string;
   equipmentBrand?: string;
   equipmentModel?: string;
   quantity: number;
